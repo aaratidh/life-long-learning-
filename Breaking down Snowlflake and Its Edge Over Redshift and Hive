@@ -1,0 +1,19 @@
+Snowflake is a modern cloud-based data platform that makes it easy to store, process, and analyze huge amounts of data without worrying about infrastructure. It separates storage and computing, so you can scale them as needed hence saving time and cost. It’s fast, flexible, and works across AWS, Azure, and GCP. You write SQL, and Snowflake handles the heavy lifting like performance tuning, scaling, and security everything all behind the scenes.
+
+Snowflake Architecture
+Snowflake’s architecture is divided into three layers.
+
+Layer 1: Storage Layer
+Snowflake stores data in its own internal storage layer built on top of cloud object stores like Amazon S3. The data is automatically compressed and stored in a highly optimized columnar format. When data is ingested, Snowflake breaks it into immutable micro-partitions, which are automatically indexed and optimized for fast querying. Users don’t have to manage indexes or partitions. Snowflake handles it all under the hood.
+Layer 2: Compute Layer
+One of the key features of Snowflake is the separation of compute and storage. Query processing is handled by compute clusters known as Virtual Warehouses, which are essentially EC2-like instances. You can scale these warehouses up or down depending on your performance needs. This means that performance and cost are flexible. Hence you only pay for compute when it's in use, and scaling is instantaneous and independent of storage.
+Layer 3: Cloud Services Layer
+The Cloud Services layer is the brain of the Snowflake platform. It manages all critical operations like metadata management, authentication, access control, query parsing, and query optimization. It ensures that compute and storage layers work seamlessly together. This layer is what powers Snowflake’s advanced features like automatic performance tuning, concurrency scaling, and the platform’s zero-maintenance user experience.
+Difference Between Hive, Snowflake, and Redshift
+Apache Hive stores data on HDFS (Hadoop Distributed File System), which relies on hard disks behind the scenes. In contrast, both Snowflake and Redshift store data in a cloud-based data lake architecture, typically leveraging services like Amazon S3. This allows Snowflake and Redshift to optimize storage using scalable, high-throughput infrastructure.
+When it comes to data format, Hive stores data in a row-based (non-columnar) format by default, although support for columnar formats like ORC and Parquet exists with some configuration. On the other hand, Redshift and Snowflake natively store data in a columnar format, which significantly boosts performance for analytics workloads.
+Reading data in Hive often requires full disk scans, resulting in slower performance and higher resource usage. In contrast, Redshift and Snowflake take advantage of the random-access nature of object storage (like S3), allowing for faster and more efficient data retrieval.
+Metadata storage also differs: Hive stores metadata in the Hive Metastore, usually backed by an external RDBMS like MySQL or PostgreSQL. Snowflake manages metadata in its internal cloud services layer, while Redshift stores it in a PostgreSQL-based system catalog within the cluster.
+A key architectural advantage of Snowflake is its separation of compute and storage, allowing users to scale them independently. Redshift and Hive have more tightly coupled architectures. Both internal and external table concepts are supported in Snowflake and Redshift, enabling flexible integration with data lakes.
+Additionally, Snowflake supports deployment across multiple cloud providers—AWS, Azure, and Google Cloud Platform—making it cloud-agnostic and giving organizations flexibility based on their existing cloud strategy.
+
