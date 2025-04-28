@@ -1,0 +1,118 @@
+## Hash-based row diff 
+
+
+# One can  create a  the hash-based  function to compare tow data base
+# Suppose you’re using PostgreSQL, Redshift, or anything that supports MD5:
+
+sql
+Copy
+Edit
+-- Create a utility SQL function to compute a row hash
+CREATE OR REPLACE FUNCTION compute_row_hash(
+    custkey TEXT,
+    orderstatus TEXT,
+    totalprice TEXT,
+    orderdate TEXT,
+    orderpriority TEXT,
+    clerk TEXT,
+    shippriority TEXT,
+    comment TEXT
+)
+RETURNS TEXT
+IMMUTABLE
+AS $$
+BEGIN
+    RETURN md5(
+        CONCAT(
+            COALESCE(custkey, ''),
+            COALESCE(orderstatus, ''),
+            COALESCE(totalprice, ''),
+            COALESCE(orderdate, ''),
+            COALESCE(orderpriority, ''),
+            COALESCE(clerk, ''),
+            COALESCE(shippriority, ''),
+            COALESCE(comment, '')
+        )
+    );
+END;
+$$ LANGUAGE plpgsql;
+ 
+# computing Hash Table
+
+SELECT 
+    o.orderkey,
+    compute_row_hash(
+        o.custkey::TEXT,
+        o.orderstatus::TEXT,
+        o.totalprice::TEXT,
+        o.orderdate::TEXT,
+        o.orderpriority::TEXT,
+        o.clerk::TEXT,
+        o.shippriority::TEXT,
+        o.comment::TEXT
+    ) AS data_hash
+FROM orders o;
+
+# Now you can join two datasets on primary key and compare only data_hash values!
+
+SELECT 
+    o.orderkey,
+    compute_row_hash(
+        o.custkey::TEXT,
+        o.orderstatus::TEXT,
+        o.totalprice::TEXT,
+        o.orderdate::TEXT,
+        o.orderpriority::TEXT,
+        o.clerk::TEXT,
+        o.shippriority::TEXT,
+        o.comment::TEXT
+    ) AS data_hash
+FROM orders o;
+
+# Now you can join two datasets on primary key and compare only data_hash values!
+# example to check diffrence Hash Value 
+
+WITH old_orders AS (
+    SELECT 
+        orderkey,
+        compute_row_hash(
+            custkey::TEXT,
+            orderstatus::TEXT,
+            totalprice::TEXT,
+            orderdate::TEXT,
+            orderpriority::TEXT,
+            clerk::TEXT,
+            shippriority::TEXT,
+            comment::TEXT
+        ) AS data_hash
+    FROM old_orders_table
+),
+new_orders AS (
+    SELECT 
+        orderkey,
+        compute_row_hash(
+            custkey::TEXT,
+            orderstatus::TEXT,
+            totalprice::TEXT,
+            orderdate::TEXT,
+            orderpriority::TEXT,
+            clerk::TEXT,
+            shippriority::TEXT,
+            comment::TEXT
+        ) AS data_hash
+    FROM new_orders_table
+)
+
+SELECT 
+    o.orderkey,
+    'Data Mismatch' AS issue
+FROM old_orders o
+FULL OUTER JOIN new_orders n
+ON o.orderkey = n.orderkey
+WHERE o.data_hash IS DISTINCT FROM n.data_hash;
+
+I use IS DISTINCT FROM instead of != because it handles NULL safely (standard SQL best practice for production pipelines).
+
+
+
+
