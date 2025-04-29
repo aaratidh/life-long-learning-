@@ -1,0 +1,69 @@
+# 1. Generate Time vs Processing Time
+
+- **Generate time** is when data is created.
+- **Processing time** is when data is processed by your pipeline.  
+- 📌 *Note: Every pipeline has its own processing time.*
+
+---
+
+# 2. Pipeline Run Time vs Execution Time
+
+- **Execution time** represents the time for the data to be processed.
+- **Run time** represents the actual time the pipeline was run.
+- Example: Your pipeline can run at 1 AM every morning and process data from the prior day.  
+- ⚠️ *Note: Do not use `datetime.now()` as the execution time.*
+
+---
+
+# 3. Store in UTC & View in Local Timezone
+
+- Store time data as **UTC** to ensure consistent analytics.
+- When visualizing in a UI, **convert to the local timezone**.
+- Data processing and debugging often require toggling between UTC and local time.
+
+---
+
+# 4. Use ISO8601 Format for Dates
+
+- Use `YYYYMMDD` (ISO8601 standard) for dates.
+- Can be stored as **integers** for simplicity.
+- Enables **proper sorting and range filtering**.
+
+---
+
+# 5. Understand Time Data Types
+
+- Most databases support:
+  - `DATE`
+  - `TIME`
+  - `TIMESTAMP`
+- Use `TIMESTAMP WITH TIME ZONE` where supported to store timezone-aware data.
+
+---
+
+# 6. Epoch Time
+
+- Epoch time = Number of seconds since **Jan 1, 1970 UTC**
+- Advantages:
+  - Single number to represent time
+  - Simplifies time arithmetic
+- Limitations:
+  - Not human-readable
+- Use `to_timestamp()` functions in SQL or code to convert for display.
+
+---
+
+# 7. Time Travel
+
+- See how data looked **at a specific point in the past**
+- Previously required tracking both event and processing times
+- Now available as a built-in **feature in modern table formats** (e.g., Delta Lake, Iceberg, Hudi)
+
+---
+
+📌 **Final Note**:  
+Data processing is tightly coupled with time. Design your systems with **temporal awareness** to enable flexibility, accuracy, and reproducibility.
+
+> Source: Joseph Machado  
+> LinkedIn Post: [https://www.linkedin.com/feed/update/urn:li:activity:7320055807516045313/?commentUrn=urn%3Ali%3Acomment%3A(activity%3A7320055807516045313%2C7322984962985517058)&dashCommentUrn=urn%3Ali%3Afsd_comment%3A(7322984962985517058%2Curn%3Ali%3Aactivity%3A7320055807516045313)](https://www.linkedin.com/feed/update/urn:li:activity:7320055807516045313/?commentUrn=urn%3Ali_
+
