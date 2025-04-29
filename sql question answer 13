@@ -1,0 +1,95 @@
+# Tables Description
+
+## Customer Table
+
+| Column Name | Data Type |
+|-------------|-----------|
+| customer_id | INTEGER   |
+| name        | VARCHAR   |
+| is_member   | BOOLEAN   |
+
+## Product Table
+
+| Column Name      | Data Type |
+|------------------|-----------|
+| product_id       | INTEGER   |
+| name             | VARCHAR   |
+| price            | FLOAT     |
+| product_category | VARCHAR   |
+
+## Transaction Table
+
+| Column Name    | Data Type |
+|----------------|-----------|
+| transaction_id | INTEGER   |
+| user_id        | INTEGER   |
+| created_at     | TIMESTAMP |
+| product_id     | INTEGER   |
+| quantity       | INTEGER   |
+
+
+# SQL Query: Find Products with Increased Sales Over the Last 4 Weeks
+
+**Problem Statement:**  
+Write a SQL query to find the list of products where the quantity purchased in the past 4 weeks (28 days) is greater than the quantity purchased in the preceding 4 weeks.  
+Also, calculate the percentage increase in quantity sold.  
+
+**Output Columns:**
+- `product_id`
+- `product_name`
+- `quantity_8_to_4_weeks_ago`
+- `quantity_4_to_0_weeks_ago`
+- `percentage_increase`
+
+---
+
+## SQL Query
+
+```sql
+WITH quantitypurchased4weeks AS (
+    SELECT
+        p.product_id, 
+        p.name, 
+        SUM(t.quantity) AS quantitypurchased
+    FROM 
+        transaction t
+        JOIN product p ON p.product_id = t.product_id
+    WHERE 
+        created_at >= CURRENT_TIMESTAMP - INTERVAL '28 days'
+    GROUP BY 
+        p.product_id, p.name 
+),
+
+quantity_purchasedpreceeding_4weeks AS (
+    SELECT 
+        p.product_id, 
+        p.name, 
+        SUM(t.quantity) AS quantitypurchased
+    FROM 
+        transaction t 
+        JOIN product p ON p.product_id = t.product_id
+    WHERE
+        created_at >= CURRENT_TIMESTAMP - INTERVAL '56 days'
+        AND created_at <= CURRENT_TIMESTAMP - INTERVAL '28 days'
+    GROUP BY 
+        p.product_id, p.name
+)
+
+SELECT 
+    qw.product_id, 
+    qw.name AS product_name,
+    qp.quantitypurchased AS quantity_8_to_4_weeks_ago,
+    qw.quantitypurchased AS quantity_4_to_0_weeks_ago,
+    ((qw.quantitypurchased - qp.quantitypurchased)::FLOAT / 
+     (qw.quantitypurchased + qp.quantitypurchased)) * 100 AS percentage_increase
+FROM 
+    quantitypurchased4weeks qw
+    JOIN quantity_purchasedpreceeding_4weeks qp  
+        ON qw.product_id = qp.product_id 
+WHERE 
+    qw.quantitypurchased > qp.quantitypurchased
+GROUP BY 
+    qw.product_id, qw.name, qw.quantitypurchased, qp.quantitypurchased;
+
+
+
