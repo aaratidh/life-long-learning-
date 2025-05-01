@@ -2,7 +2,7 @@
 
 - **Generate time** is when data is created.
 - **Processing time** is when data is processed by your pipeline.  
-- 📌 *Note: Every pipeline has its own processing time.*
+-  *Note: Every pipeline has its own processing time.*
 
 ---
 
@@ -11,7 +11,7 @@
 - **Execution time** represents the time for the data to be processed.
 - **Run time** represents the actual time the pipeline was run.
 - Example: Your pipeline can run at 1 AM every morning and process data from the prior day.  
-- ⚠️ *Note: Do not use `datetime.now()` as the execution time.*
+-  *Note: Do not use `datetime.now()` as the execution time.*
 
 ---
 
@@ -61,7 +61,7 @@
 
 ---
 
-📌 **Final Note**:  
+ **Final Note**:  
 Data processing is tightly coupled with time. Design your systems with **temporal awareness** to enable flexibility, accuracy, and reproducibility.
 
 > Source: Joseph Machado  
