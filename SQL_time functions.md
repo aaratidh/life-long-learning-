@@ -1,11 +1,8 @@
 
----
-
-```markdown
 # SQL Date and Time Functions
 
 ## Table of Contents
-
+- [PostgreSQL](#postgresql)
   - [CURRENT_TIME](#current_time)
   - [CURRENT_DATE](#current_date)
   - [CURRENT_TIMESTAMP](#current_timestamp)
@@ -14,6 +11,7 @@
   - [Date Arithmetic](#date-arithmetic)
   - [Date Truncate and Rounding](#date-truncate-and-rounding)
   - [Casting and Conversions](#casting-and-conversions)
+- [T-SQL (SQL Server)](#t-sql-sql-server)
   - [GETDATE()](#getdate)
   - [SYSDATETIME()](#sysdatetime)
   - [DATETIMEOFFSET()](#datetimeoffset)
@@ -32,7 +30,6 @@ Gives current time with time zone value.
 SELECT CURRENT_TIME;
 -- Output:
 15:47:25.123456+00
-```
 
 We can also modify the format using the following:
 ```sql
@@ -224,4 +221,3 @@ current_datetime_with_timezone
 
 - High-precision time (7 digits)
 - Time zone offset (`-04:00` for Eastern Daylight Time)
-```
