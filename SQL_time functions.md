@@ -5,7 +5,7 @@
 # SQL Date and Time Functions
 
 ## Table of Contents
-- [PostgreSQL](#postgresql)
+
   - [CURRENT_TIME](#current_time)
   - [CURRENT_DATE](#current_date)
   - [CURRENT_TIMESTAMP](#current_timestamp)
@@ -14,7 +14,6 @@
   - [Date Arithmetic](#date-arithmetic)
   - [Date Truncate and Rounding](#date-truncate-and-rounding)
   - [Casting and Conversions](#casting-and-conversions)
-- [T-SQL (SQL Server)](#t-sql-sql-server)
   - [GETDATE()](#getdate)
   - [SYSDATETIME()](#sysdatetime)
   - [DATETIMEOFFSET()](#datetimeoffset)
