@@ -30,7 +30,7 @@ Gives current time with time zone value.
 SELECT CURRENT_TIME;
 -- Output:
 15:47:25.123456+00
-
+```
 We can also modify the format using the following:
 ```sql
 SELECT TO_CHAR(CURRENT_TIME, 'HH24:MI:SS') AS current_time_formatted;
