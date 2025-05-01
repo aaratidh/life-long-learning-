@@ -138,4 +138,3 @@ current_datetime_with_timezone
 - Time zone offset (`-04:00` for Eastern Daylight Time)
 ```
 
-Let me know if you want this as a `.py`, `.txt`, or `.md` file again!
