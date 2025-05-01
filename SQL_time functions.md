@@ -1,3 +1,7 @@
+
+---
+
+```markdown
 # SQL Date and Time Functions
 
 ## Table of Contents
@@ -6,13 +10,16 @@
   - [CURRENT_DATE](#current_date)
   - [CURRENT_TIMESTAMP](#current_timestamp)
   - [NOW()](#now)
+  - [Date Formatting Functions](#date-formatting-functions)
+  - [Date Arithmetic](#date-arithmetic)
+  - [Date Truncate and Rounding](#date-truncate-and-rounding)
+  - [Casting and Conversions](#casting-and-conversions)
 - [T-SQL (SQL Server)](#t-sql-sql-server)
   - [GETDATE()](#getdate)
   - [SYSDATETIME()](#sysdatetime)
   - [DATETIMEOFFSET()](#datetimeoffset)
 
 ---
-
 
 ## PostgreSQL
 
@@ -88,6 +95,88 @@ SELECT NOW();
 
 ---
 
+### Date Formatting Functions
+
+**TO_CHAR** – Converts date to string in desired format.
+
+```sql
+SELECT TO_CHAR(NOW(), 'YYYY-MM-DD HH24:MI') AS formatted_datetime;
+-- Output:
+formatted_datetime  
+2025-04-30 15:45
+```
+
+**EXTRACT** – Extract part of a date.
+
+```sql
+SELECT EXTRACT(YEAR FROM NOW()) AS current_year;
+-- Output:
+current_year  
+2025
+```
+
+**T-SQL Equivalents:**
+```sql
+FORMAT(GETDATE(), 'yyyy-MM-dd HH:mm');
+DATEPART(YEAR, GETDATE());
+```
+
+---
+
+### Date Arithmetic
+
+**PostgreSQL:**
+```sql
+SELECT NOW() + INTERVAL '5 days';
+SELECT NOW() - INTERVAL '5 days';
+SELECT AGE(NOW(), '2025-01-01');
+```
+
+**T-SQL:**
+```sql
+SELECT DATEADD(DAY, 5, GETDATE());
+SELECT DATEADD(DAY, -7, GETDATE());
+SELECT DATEDIFF(DAY, '2025-01-01', GETDATE());
+```
+
+---
+
+### Date Truncate and Rounding
+
+**PostgreSQL:**
+```sql
+SELECT DATE_TRUNC('month', NOW());
+SELECT DATE_TRUNC('day', NOW());
+-- Output: '2025-04-01 00:00:00'
+```
+
+**T-SQL:**
+```sql
+SELECT CAST(GETDATE() AS DATE);
+SELECT FORMAT(GETDATE(), 'yyyy-MM-dd');
+-- Output: '2025-04-01'
+```
+
+---
+
+### Casting and Conversions
+
+**PostgreSQL:**
+```sql
+SELECT TO_DATE('2025-04-30', 'YYYY-MM-DD');
+SELECT TO_CHAR(NOW(), 'YYYY-MM-DD');
+-- Output: '2025-04-30'
+```
+
+**T-SQL:**
+```sql
+SELECT CAST('2025-04-30' AS DATE);
+SELECT FORMAT(GETDATE(), 'yyyy-MM-dd');
+-- Output: '2025-04-30'
+```
+
+---
+
 ## T-SQL (SQL Server)
 
 ### GETDATE()
@@ -137,4 +226,3 @@ current_datetime_with_timezone
 - High-precision time (7 digits)
 - Time zone offset (`-04:00` for Eastern Daylight Time)
 ```
-
