@@ -65,3 +65,20 @@ JOIN region r
 GROUP BY r.name, w.channel
 ORDER BY num_events DESC;
 ```
+
+### Question 16 
+What was the smallest order placed by each account in terms of total usd. Provide only two columns - the account name and the total usd. Order from smallest dollar amounts to largest.
+
+### Answer 
+
+```sql
+SELECT a.name, MIN(total_amt_usd) smallest_order
+FROM accounts a
+JOIN orders o
+ON a.id = o.account_id
+GROUP BY a.name
+ORDER BY smallest_order;
+
+```
+
+
