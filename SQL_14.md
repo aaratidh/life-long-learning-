@@ -69,6 +69,8 @@ ORDER BY num_events DESC;
 ### Question 16 
 What was the smallest order placed by each account in terms of total usd. Provide only two columns - the account name and the total usd. Order from smallest dollar amounts to largest.
 
+---
+
 ### Answer 
 
 ```sql
