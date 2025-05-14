@@ -34,7 +34,7 @@ JOIN orders o
   ON a.id = o.account_id
 WHERE standard_qty > 100 
   AND poster_qty > 50;
-
+```
 
 
 
@@ -64,4 +64,4 @@ JOIN region r
   ON r.id = s.region_id
 GROUP BY r.name, w.channel
 ORDER BY num_events DESC;
-
+```
