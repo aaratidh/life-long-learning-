@@ -38,7 +38,6 @@ WHERE standard_qty > 100
 
 
 
-
 ### Question 15 
 
 Determine the number of times a particular channel was used in the `web_events` table for each region.  
@@ -83,5 +82,24 @@ GROUP BY a.name
 ORDER BY smallest_order;
 
 ```
+###  Question 16
+
+In which month of which year did Walmart spend the most on gloss paper in terms of dollars?
+
+
+``` sql 
+
+SELECT DATE_TRUNC('month', o.occurred_at) ord_date, SUM(o.gloss_amt_usd) tot_spent
+FROM orders o 
+JOIN accounts a
+ON a.id = o.account_id
+WHERE a.name = 'Walmart'
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 1;
+
+
+```
+
 
 
