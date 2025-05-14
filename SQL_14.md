@@ -51,7 +51,7 @@ Order your table with the **highest number of occurrences first**.
 
 ---
 
-### Answer
+### Answer:
 
 ```sql
 SELECT r.name, w.channel, COUNT(*) AS num_events
