@@ -6,7 +6,7 @@
 - When working with subqueries, limiting the amount of data you're working with in the place where it will be executed first will have the maximum impact on query run time. 
 
 
-## Make join less complicated 
+### Make join less complicated 
 -reduce the number of row  that are evaluted during join 
 -pre aggregation befor joining 
 -use explain tool (call query plan and find the order in which query is executed )
