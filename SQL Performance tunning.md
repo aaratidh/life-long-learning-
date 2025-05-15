@@ -7,7 +7,7 @@
 
 
 ### Make join less complicated 
--reduce the number of row  that are evaluted during join 
--pre aggregation befor joining 
--use explain tool (call query plan and find the order in which query is executed )
+- reduce the number of row  that are evaluted during join 
+- pre aggregation befor joining 
+- use explain tool (call query plan and find the order in which query is executed )
 
