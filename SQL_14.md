@@ -133,8 +133,15 @@ from  accounts
 ```
 
 
+### Question 19 
+Now see if you can do the same thing for every rep name in the sales_reps table. Again provide first and last name columns.
 
 
-
-
-
+```sql
+select 
+ name ,
+ left(name, POSITION (' ' in  name ))as firstname,
+ right(name, length(name)-POSITION (' ' in  name ))as lastname
+                     
+from  sales_reps 
+```
