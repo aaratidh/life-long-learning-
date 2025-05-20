@@ -116,3 +116,25 @@ FROM orders
 
 ```
 
+### Question  18 
+
+Use the accounts table to create first and last name columns that hold the first and last names for the primary_poc.
+
+
+```sql
+
+select 
+ primary_poc,
+ left(primary_poc, POSITION (' ' in  primary_poc ))as firstname,
+ right(primary_poc, length(primary_poc)-POSITION (' ' in  primary_poc ))as lastname
+                     
+from  accounts 
+
+```
+
+
+
+
+
+
+
