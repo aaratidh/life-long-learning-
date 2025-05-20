@@ -155,14 +155,17 @@ Each company in the accounts table wants to create an email address for each pri
 with  t1 as 
 ( 
  select 
- primary_poc ,
+ name ,
  left(primary_poc, POSITION (' ' in  primary_poc ))as firstname,
  right(primary_poc, length(primary_poc)-POSITION (' ' in  primary_poc ))as lastname
                      
 from  accounts  
 
 )
-select * from  t1
+      
+select 
+  CONCAT(firstname,'.',lastname,'@',Replace(name, ' ', ''),'.com' ) as email 
+  from t1 
        
 ```
 
