@@ -145,3 +145,27 @@ select
                      
 from  sales_reps 
 ```
+### Question 20 
+
+Each company in the accounts table wants to create an email address for each primary_poc. The email address should be the first name of the primary_poc . last name primary_poc @ company name .com.
+
+
+
+```sql
+with  t1 as 
+( 
+ select 
+ primary_poc ,
+ left(primary_poc, POSITION (' ' in  primary_poc ))as firstname,
+ right(primary_poc, length(primary_poc)-POSITION (' ' in  primary_poc ))as lastname
+                     
+from  accounts  
+
+)
+select * from  t1
+       
+```
+
+
+
+
