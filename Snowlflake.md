@@ -66,8 +66,7 @@ This is the brain of the Snowflake platform. It manages metadata, authentication
  
 - Bulk loading
        - one can directly load data from s3 into snowflake table using copy into command
-  ![Screenshot 2025-05-21 191830](https://github.com/user-attachments/assets/d94fcdf0-7622-42f7-889f-2606919024cc)
-
+![Screenshot 2025-05-21 191830](https://github.com/user-attachments/assets/d94fcdf0-7622-42f7-889f-2606919024cc)
 
 ![image](https://github.com/user-attachments/assets/0fa1a6ad-cd4b-43bd-b6a7-694ad3905955)
 
