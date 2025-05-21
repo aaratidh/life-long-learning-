@@ -60,3 +60,15 @@ This is the brain of the Snowflake platform. It manages metadata, authentication
 
 ---
 
+### bulk loading and  staging in snowflake: 
+
+
+
+
+
+
+
+
+
+
+
