@@ -86,8 +86,26 @@ Show ** SHOW STAGES LIKE 'ADSB' **  show all the stage like ADSB show url of the
 - copy_options      Default COPY INTO options if any
 - comment	          Any comment added when the stage was created
 
+### READING PARQUET FILES FORM A S3 FOLDER INTO SNOWFLAKE 
+```sql
+create or replace table listing_parquet(parquet_raw  variant)
 
+```
 
+```sql
+
+copy into listing_parquet from ( select $1 from  @ADSB/stagging)
+file_format =(TYPE = 'PARQUET')
+PATTERN = '.*\.parquet';
+
+select * from listing_parquet
+
+```
+### What does $1 meaning in snowflake slect statemnt snice parquet data doesnot have columns name so it use $1, $2 to refer as columns: 
+
+- $1 = First column
+- $2 = Second column
+- $3 = Third column
 
 
 
