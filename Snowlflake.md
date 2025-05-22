@@ -113,3 +113,74 @@ select * from listing_parquet
 select $1:buyerid , $1:dateid from  listing_parquet:
 
 ```
+### MAPPING PARQUET DATA DIRECTLY INTO SNOWFALKE TABLE
+
+```sql
+create  or replace table listing  (
+
+  buyerid INTEGER ,
+  commission FLOAT,
+  dateid integer,
+  eventid integer,
+  listid integer,
+  pricepaid integer,
+  qtysold integer,
+  salesid integer,
+  saletime timestamp,
+   sellerid integer
+);
+
+```
+
+```sql
+
+COPY INTO listing
+FROM (
+  SELECT
+    $1:buyerid,
+    $1:commission,
+    $1:dateid,
+    $1:eventid,
+    $1:listid,
+    $1:pricepaid,
+    $1:qtysold,
+    $1:salesid,
+    $1:saletime,
+    $1:sellerid
+  FROM @ADSB/stagging
+)
+FILE_FORMAT = (TYPE = 'PARQUET');
+
+```
+### You can also drictly write from snowflake into S3 
+- AWS  will automatically create folder for the file in Aws  SInce the folder in which data are created are mounted. Hence, snowflake has direct access to the folder and can directly copy data  into S3 folder 
+
+```sql
+Copy into  @ADBS/output  from  pipe(a table in snowflake) Output folder in S3
+
+```
+
+```sql
+
+CREATE TABLE V1 as select * from "DB1"."PUBLIC"."TAB_TAB" limit 1;
+copy into @S3_STAGE1/snowflake_unload/temp2 from "V1";
+
+```
+
+### You can also create table which is same with existing table:
+
+```sql
+create table lisitng_copy LIKE listing
+
+```
+
+
+## TIME TRAVEL 
+
+
+
+
+
+
+
+
