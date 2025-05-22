@@ -1,4 +1,4 @@
----
+ ---
 title: "Snowflake vs Redshift and Hive"
 output: html_document
 ---
@@ -71,9 +71,20 @@ This is the brain of the Snowflake platform. It manages metadata, authentication
 
 ![image](https://github.com/user-attachments/assets/0fa1a6ad-cd4b-43bd-b6a7-694ad3905955)
 
-This  'copy into'  code  the data from text.csv which is inside the s3 folder directly into the data table in snowflake
+This  ** 'COPY INTO' **  code  the data from text.csv which is inside the s3 folder directly into the data table in snowflake. 
+Show ** SHOW STAGES LIKE 'ADSB' **  show all the stage like ADSB show url of the s3 which is stage in the snowflake. 
 
+** LIST @ADSB/snow/; **
+- This will list all files stored in the external stage @ADSB, specifically within the subfolder input/snow/ in your linked S3 bucket.
 
+** DESC STAGE ADSB; **   this will provide information of This command provides metadata about the stage, including:
+- Column Name	      What It Tells You
+- url	             The external location (like an S3 bucket) the stage points to
+- has_credentials   whether credentials (IAM or access key) are attached
+- type	             Type of stage (External, Internal)
+- file_format	      Default file format if defined (e.g., CSV, JSON)
+- copy_options      Default COPY INTO options if any
+- comment	      Any comment added when the stage was created
 
 
 
