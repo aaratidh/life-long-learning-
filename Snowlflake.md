@@ -176,6 +176,8 @@ create table lisitng_copy LIKE listing
 
 
 ## TIME TRAVEL 
+- Relation database are not good for fix schema 
+- Relational database are not good for dynamic schema 
 
 
 
