@@ -107,5 +107,9 @@ select * from listing_parquet
 - $2 = Second column
 - $3 = Third column
 
+### Colon offer  is used to  access the filed from JSON Data 
 
+```sql 
+select $1:buyerid , $1:dateid from  listing_parquet:
 
+```
