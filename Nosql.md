@@ -34,4 +34,48 @@
 - Dyanmic schema means that documents in the same collection do not need to have the same set of field or structure
 - Common filed in a collection's documents may hold different types of data
   
+- Every time you inser data sytem genarte sytem key 
+- 12 bytes of data (timestamp, machine id, process id , incrematal values)
+- always geting
+
+### You can not do aggaeration in Dynamo DB you need to brith data from DynaoDB to Redshift 
+
+#### 
+- Document Oriented Storage
+- Index on any attibute
+- replication and high availability
+- Auto- Sharding
+- Rich Query
+- Fast in -place updates
+- big data
+- Data hub
+- USer
+- NoSQL solution
+- User Data Management
+- Data Hub
+- Mobile application MongoDB are used
+- Fast upadted
+
+#### Data Modeling 
+##### Denormalized data  Embedded Data MOdel
+![image](https://github.com/user-attachments/assets/28c959ec-4a66-4d3a-8615-03d7eec8e3da)
+
+##### Normalized Data 
+![image](https://github.com/user-attachments/assets/a9ce52b6-1717-46c1-a446-db43ea605459)
+
+### Note: If you find that one document size does not go beyound 16 MB then use Embedded Data model other wise use Normalized Data model 
+
+#### Data types in MOngo DB 
+
+![image](https://github.com/user-attachments/assets/55c8b20e-15fc-4ff6-b82c-dd67733cd51b)
+
+
+
+
+
+
+  
+
+
+  
   
