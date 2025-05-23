@@ -71,7 +71,9 @@
 
 ![image](https://github.com/user-attachments/assets/55c8b20e-15fc-4ff6-b82c-dd67733cd51b)
 
-
+#### Aggragtion framework 
+- MongoDB version of SQL Group by
+- $match $ 
 
 
 
