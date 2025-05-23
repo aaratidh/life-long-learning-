@@ -11,7 +11,9 @@
 
 ###  MOngo DB
 - MongoDb is a cross-platform, document oriented datbase that provides, high performance, high availability, and easy scalability
-- MongoDb work on concept of collection and document 
+- MongoDb work on concept of collection and document
+- flexible to different cloud
+- self hostage
 - Table are like container (collection of dictionary)
 - We can add record interm of documnet 
 - Each document is added like a dictionary
