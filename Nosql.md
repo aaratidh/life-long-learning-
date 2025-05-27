@@ -95,20 +95,20 @@ people.write.format("com.mongodb.spark.sql.DefaultSource").mode("append").option
 ```
 
 #### Aggeration function GROUP in PostgreSQL 
--- db.mycol.aggregate([{$group : {_id : "$by", num_tutorial : {$sum : 1}}}])
--- db.mycol.aggregate([{$group : {_id : "$by", sumofLikes : {$sum : "$likes"}}}])
--- db.mycol.aggregate([{$group : {_id : "$by", avgOfLikes : {$avg : "$likes"}}}])
--- db.mycol.aggregate([{$group : {_id : "$by", minLikes : {$min : "$likes"}}}])
--- db.mycol.aggregate([{$group : {_id : "$by", maxLikes : {$max : "$likes"}}}])
+- db.mycol.aggregate([{$group : {_id : "$by", num_tutorial : {$sum : 1}}}])
+- db.mycol.aggregate([{$group : {_id : "$by", sumofLikes : {$sum : "$likes"}}}])
+- db.mycol.aggregate([{$group : {_id : "$by", avgOfLikes : {$avg : "$likes"}}}])
+- db.mycol.aggregate([{$group : {_id : "$by", minLikes : {$min : "$likes"}}}])
+- db.mycol.aggregate([{$group : {_id : "$by", maxLikes : {$max : "$likes"}}}])
 
 #### Functions in MongoDB 
--- db.mycol.find()
--- db.mycol.find().pretty()
--- Equality db.mycol.find({"by":"bootcamp"}).pretty()
--- Less than  db.mycol.find({"likes":{$lt:50}}).pretty()
--- Less Than Equals db.mycol.find({"likes":{$lte:50}}).pretty()
--- Greater Than db.mycol.find({"likes":{$gt:50}}).pretty()
--- Greater Than Equals db.mycol.find({"likes":{$gte:50}}).pretty()
+- db.mycol.find()
+- db.mycol.find().pretty()
+- Equality db.mycol.find({"by":"bootcamp"}).pretty()
+- Less than  db.mycol.find({"likes":{$lt:50}}).pretty()
+- Less Than Equals db.mycol.find({"likes":{$lte:50}}).pretty()
+- Greater Than db.mycol.find({"likes":{$gt:50}}).pretty()
+- Greater Than Equals db.mycol.find({"likes":{$gte:50}}).pretty()
 
 
   
