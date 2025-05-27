@@ -79,16 +79,27 @@
 Spark has in-build connector  only for hive and HDFS for other you have to use the jar file to connect with Database system 
 
 ```py
-
-
-
+mongosh "mongodb+srv://dbuser:dbpass@clustername.mongodb.net/mydb1" --apiVersion 1 --username dbuser
 ```
 
+#### Read from mongoDB 
 
+```py
+df = spark.read.format("com.mongodb.spark.sql.DefaultSource").option("uri", "mongodb+srv://dbuser:dbpass@clustername.mongodb.net/sampleDB.mycol").load()
+```
 
+#### Write in MongoDB 
 
+```py
+people.write.format("com.mongodb.spark.sql.DefaultSource").mode("append").option("uri","mongodb+srv://dbuser:dbpass@clustername.mongodb.net/mydb1.contacts").save()
+```
 
-  
+#### Aggeration function GROUP in PostgreSQL 
+-- db.mycol.aggregate([{$group : {_id : "$by", num_tutorial : {$sum : 1}}}])
+-- db.mycol.aggregate([{$group : {_id : "$by", sumofLikes : {$sum : "$likes"}}}])
+-- db.mycol.aggregate([{$group : {_id : "$by", avgOfLikes : {$avg : "$likes"}}}])
+-- db.mycol.aggregate([{$group : {_id : "$by", minLikes : {$min : "$likes"}}}])
+-- db.mycol.aggregate([{$group : {_id : "$by", maxLikes : {$max : "$likes"}}}])
 
 
   
