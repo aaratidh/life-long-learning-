@@ -73,7 +73,17 @@
 
 #### Aggragtion framework 
 - MongoDB version of SQL Group by
-- $match $ 
+- $match $
+
+###  connecting spark with mongodb  
+Spark has in-build connector  only for hive and HDFS for other you have to use the jar file to connect with Database system 
+
+```py
+
+
+
+```
+
 
 
 
