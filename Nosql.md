@@ -5,7 +5,7 @@
 - used to store the data in consitantly  eg. financial transaction
 - they are not highly available
 - Data need to be consistent
-
+ 
 #### Eventually available  NO
 - Available  when one user is accessing  data  another user is upadting , and another is waiting then the user who is accessing the data will get older version of data but system will be available to the every user
 
