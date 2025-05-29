@@ -25,8 +25,25 @@
 - Using applications
 
 ### Other properties of Databricks 
-- Readstream
-- Read 
-- while we read data from streamer there nees
-
+- Readstream , Writestream 
+- Since it does both batch and streaming processing
+- Read method means batch reading, and write method means batch reading
+- Readstream while we read data from streaming means data comes in packets and there need to be a destination to dump that packets. There always need to be a combination of Readstream and writestream since data are continious comming. One need to provide sink for the data. 
+- Spark streaming is continious process and while pushing data into table spark is wating for new data to process( data process can be writting a new data into output file). For every new data identification spark add new record and write it into directory.
+- Spark maintains version for writting new data every time:
+    - version '0'  create data
+    - version '1'  add 1st batch
+    - version '2'  add 2nd batch
+### HAnding Failure in data bricks
+- We will be using version and timestamp to identiofy when we were left to process data
+- Here are few methods to process data:
+    - Read from start
+    - Read from Table
+    - Read from Specific Verison
+    - Read from specific timestamp
+    - Resilancy and checkpointing
+###  Checkpointing 
+- Checkpointing is the mechanism where spark record meta data of the successfull batches od data process (which can be read job, write job, clenaing job )
+- Sometime time stampp and version can be inclusive and may introduce the duplicated data so we prefer checkpointing 
+  
 
