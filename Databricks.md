@@ -44,6 +44,12 @@
     - Resilancy and checkpointing
 ###  Checkpointing 
 - Checkpointing is the mechanism where spark record meta data of the successfull batches od data process (which can be read job, write job, clenaing job )
-- Sometime time stampp and version can be inclusive and may introduce the duplicated data so we prefer checkpointing 
+- Sometime time stampp and version can be inclusive and may introduce the duplicated data so we prefer checkpointing
+- And you add checkpointing in writestream or any process or jobs
+```py
+
+df.writeStream.option("checkpointlocation","/tmp/checkpoint/2").foreachBatch(foreach_batch_function).start()
+
+```
   
 
