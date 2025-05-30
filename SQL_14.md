@@ -170,3 +170,74 @@ select
 ```
 )
 
+
+
+### Questions 17 
+
+Write an SQL query to find the last time when each bike was used.
+
+Return the result table ordered by the bikes that were most recently used. 
+
+The query result format is in the following example.
+
+Table: 
+  
+Bikes
+
++-------------+----------+ 
+| Column Name | Type     | 
++-------------+----------+ 
+| ride_id     | int      | 
+| bike_number | int      | 
+| start_time  | datetime |
+| end_time    | datetime |
++-------------+----------+
+
+
+```sql
+
+Select  bike_number ,  max(end time) as end time  
+from Bikes 
+group by bike_number 
+order by max(end_time) desc
+
+```
+
+
+### Question 18 
+
+Year over churn 
+
+driver_id | start date | end_date 
+---------------------------------
+|   1      | 2021-07-05 |  2022-08-02      
+|   2      | 2021-07-05 |  2023-09-06
+|   3      | 2021-07-05 |  2024-08-08
+     
+
+```sql
+
+
+with year_Churn as (
+
+slecet year(end_date) as yer , count(1) as churn from lyft_divers 
+where end_date is not null 
+group by year(end_date)
+
+)
+
+Select current_year.year, current_year.churn  ,
+
+case 
+	when last_year.churn > current_year.churn then 'decrease'
+	when last_year.chrun < current_year.churn then 'increase'
+        else 'no change'
+	end as chnage_indicator 
+from yearly_churn current_year 
+        left join yearly_churn last_year on  current_year.year = last_year.year+ 1
+
+```
+
+
+
+
