@@ -184,8 +184,7 @@ Table:
   
 Bikes
 
-+-------------+----------+ 
-| Column Name | Type     | 
+ Column Name | Type      | 
 +-------------+----------+ 
 | ride_id     | int      | 
 | bike_number | int      | 
