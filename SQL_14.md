@@ -182,15 +182,17 @@ The query result format is in the following example.
 
 Table: 
   
-Bikes
 
- Column Name | Type      | 
-+-------------+----------+ 
-| ride_id     | int      | 
-| bike_number | int      | 
-| start_time  | datetime |
-| end_time    | datetime |
-+-------------+----------+
+
+### Table: Bikes
+
+| Column Name | Type      |
+|-------------|-----------|
+| ride_id     | int       |
+| bike_number | int       |
+| start_time  | datetime  |
+| end_time    | datetime  |
+
 
 
 ```sql
@@ -208,10 +210,10 @@ order by max(end_time) desc
 Year over churn 
 
 driver_id | start date | end_date 
----------------------------------
-|   1      | 2021-07-05 |  2022-08-02      
-|   2      | 2021-07-05 |  2023-09-06
-|   3      | 2021-07-05 |  2024-08-08
+--------------------------------------
+|   1      | 2021-07-05 |  2022-08-02 |   
+|   2      | 2021-07-05 |  2023-09-06 |
+|   3      | 2021-07-05 |  2024-08-08 |
      
 
 ```sql
