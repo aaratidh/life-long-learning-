@@ -21,6 +21,7 @@ To avoid a division by zero error, it's helpful to add **`0.01` to the denominat
 ## Answer:
 
 ```sql
+
 SELECT 
     r.name AS region, 
     a.name AS accountname, 
@@ -288,15 +289,15 @@ order  by
 limit 1 
 
 ```
-
+``` sql
 
 With monthly_sales AS(
 
-	Select 
-		Date_tunct('month' , invoicedate) as month, 
-		description, 
-		sum(unitprice * quantity) as total amount 
-		group by Date_tunct('month' , invoicedate) as month,  , description
+Select 
+	Date_tunct('month' , invoicedate) as month, 
+	description, 
+	sum(unitprice * quantity) as total amount 
+	group by Date_tunct('month' , invoicedate) as month,  , description
 ), 
 
 ranke_item as (
@@ -318,3 +319,4 @@ from
 
 
 
+```
