@@ -241,5 +241,80 @@ from yearly_churn current_year
 ```
 
 
+### Question 18 
+
+Q.
+
+	Find the best-selling item for each month (no need to separate months by year) where the biggest total invoice was paid.  
+	The best-selling item is calculated using the formula (unitprice * quantity ). Output the description of the item along with the amount paid. 
+
+Your output should include:
+
+	the month (use DATE_TRUNC('month', invoicedate)),
+	the description of the best-selling item, 
+	and the total amount paid.
+
+
+Table: 
+
+### Table: online_retail
+
+| Column Name  | Data Type | Description                              |
+|--------------|-----------|------------------------------------------|
+| invoiceno  | VARCHAR   | Unique invoice ID                          |
+| stockcode  | VARCHAR   | Product stock code                         |
+| description| VARCHAR   | Description of the item                    |
+| quantity   | INT       | Number of units purchased                  |
+| invoicedate| DATETIME  | Date and time of the invoice               |
+| unitprice  | FLOAT     | Price per unit                             |
+| customerid | FLOAT     | ID of the customer                         |
+| country    | VARCHAR   | Customer’s country                         |
+
+
+```sql
+
+Solution: 
+
+Select 
+	Date_trunc('month', invoicedate) as month 
+	max(unitprice * quantity) as best selling item, 
+	description 
+from 
+	online_retails 
+group by 
+	month, description 
+order  by 
+	 Date_trunc('month', invoicedate)
+limit 1 
+
+```
+
+
+With monthly_sales AS(
+
+	Select 
+		Date_tunct('month' , invoicedate) as month, 
+		description, 
+		sum(unitprice * quantity) as total amount 
+		group by Date_tunct('month' , invoicedate) as month,  , description
+), 
+
+ranke_item as (
+
+	select *, 
+       		Rank() over (Partition by  month order by  total amount  desc) as rnk 
+        from 
+		monthly_sales
+)
+
+Select invoceno.,
+       description, 
+       totalamount 
+from 
+       Ranked_item 
+       where rnk = 1
+
+)
+
 
 
