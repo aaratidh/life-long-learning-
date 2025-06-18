@@ -354,7 +354,7 @@ order by count(from_user) desc
 #### Note : One can use Rank dense Rank and also Row_number will give same number of output because   we are using a tie breaker which is order of the user username: if there were not a tie break then you cannot use Rank and Dense rank because this  will give you non- unique values 
 
 
- #### Q  19 # SQL Challenge: Successful Multiple Purchases in the Last 1 Month
+ #### Q.20  SQL Challenge: Successful Multiple Purchases in the Last 1 Month
 
 
 **Find customers with successful multiple purchases in the last 1 month.**  
