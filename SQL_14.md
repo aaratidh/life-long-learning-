@@ -354,5 +354,57 @@ order by count(from_user) desc
 #### Note : One can use Rank dense Rank and also Row_number will give same number of output because   we are using a tie breaker which is order of the user username: if there were not a tie break then you cannot use Rank and Dense rank because this  will give you non- unique values 
 
 
- #### Q ? why don't we need to do partition by ??
+ #### Q  19 # SQL Challenge: Successful Multiple Purchases in the Last 1 Month
+
+
+**Find customers with successful multiple purchases in the last 1 month.**  
+- A purchase is considered **successful** if it is **not returned within 1 week of purchase** (i.e., either return_date is NULL or return_date > purchase_date + 7 days).
+
+---
+
+##  Table: `purchases`
+
+| purchase_id | customer_id | purchase_date | return_date |
+|-------------|-------------|----------------|--------------|
+| 1           | 101         | 2025-04-30     | 2025-05-01   |
+| 2           | 102         | 2025-04-29     | 2025-04-29   |
+| 3           | 101         | 2025-04-30     | *(null)*     |
+| 4           | 103         | 2025-04-05     | *(null)*     |
+| 5           | 103         | 2025-04-17     | *(null)*     |
+| 6           | 101         | 2025-04-08     | 2025-04-10   |
+| 7           | 102         | 2025-03-28     | *(null)*     |
+| 8           | 104         | 2025-04-01     | 2025-04-20   |
+
+---
+
+## SQL Solution
+
+```sql
+-- Step-by-step SQL to find customers with successful multiple purchases in the last 1 month
+
+WITH filtered_purchases AS (
+    SELECT *
+    FROM purchases
+    WHERE purchase_date >= CURRENT_DATE - INTERVAL '1 month'
+),
+successful_purchases AS (
+    SELECT *
+    FROM filtered_purchases
+    WHERE return_date IS NULL 
+       OR return_date > purchase_date + INTERVAL '7 days'
+),
+customer_counts AS (
+    SELECT customer_id, COUNT(*) AS purchase_count
+    FROM successful_purchases
+    GROUP BY customer_id
+)
+SELECT customer_id
+FROM customer_counts
+WHERE purchase_count > 1;
+
+```
+
+
+
+
 
