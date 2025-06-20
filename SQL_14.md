@@ -410,9 +410,9 @@ WHERE purchase_count > 1;
 
 ```sql
 
-delete * from care where ctid in  (
+delete * from care where ctid  not in  (
 
-Select  id, name, model, 
+Select  max(ctid) 
 from cars 
 group by id, name, model
 having count(*) >1
