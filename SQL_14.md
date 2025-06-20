@@ -419,5 +419,26 @@ having count(*) >1
 )
 ```
 
+### Q calulation height salary from each department 
+
+employee table 
+
+| id  | name      | dept    | salary |
+|-----|-----------|---------|--------|
+| 1   | Alexander | Admin   | 6500   |
+| 2   | Leo       | Finance | 7000   |
+| 3   | Robin     | IT      | 2000   |
+| 4   | Ali       | IT      | 4000   |
+| 5   | Maria     | IT      | 6000   |
+| 6   | Alice     | Admin   | 5000   |
+| 7   | Sebastian | HR      | 3000   |
+| 8   | Emma      | Finance | 4000   |
+| 9   | John      | HR      | 4500   |
+| 10  | Kabir     | IT      | 8000   |
+
+
+![image](https://github.com/user-attachments/assets/24d0b79d-bc47-4b3b-95d9-185066a3f89f)
+
+
 
 
