@@ -447,7 +447,6 @@ employee table
 ```
 ![image](https://github.com/user-attachments/assets/6eee3bda-b3fc-4657-a3dd-f08cf9ae908f)
 
-![image](https://github.com/user-attachments/assets/24d0b79d-bc47-4b3b-95d9-185066a3f89f)
 
 
 
