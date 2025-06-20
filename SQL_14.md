@@ -410,7 +410,7 @@ WHERE purchase_count > 1;
 
 ```sql
 
-delete * from (
+delete * from care where ctid in  (
 
 Select  id, name, model, 
 from cars 
