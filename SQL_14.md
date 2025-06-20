@@ -404,7 +404,20 @@ WHERE purchase_count > 1;
 
 ```
 
+### Q delete Duplicated from the SQl function 
 
+![image](https://github.com/user-attachments/assets/dc5845b8-7590-4932-84da-9eb32af9e728)
+
+```sql
+
+delete * from (
+
+Select  id, name, model, 
+from cars 
+group by id, name, model
+having count(*) >1
+)
+```
 
 
 
