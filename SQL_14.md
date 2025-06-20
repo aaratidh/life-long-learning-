@@ -436,6 +436,16 @@ employee table
 | 9   | John      | HR      | 4500   |
 | 10  | Kabir     | IT      | 8000   |
 
+```sql
+
+    select id, name, dept, salary,
+           max(salary) over (partition by dept order by salary desc) as highest_Salary,
+		   min(salary) over (partition by dept order by salary asc) as lowest_Salary
+    from employees
+
+
+```
+![image](https://github.com/user-attachments/assets/6eee3bda-b3fc-4657-a3dd-f08cf9ae908f)
 
 ![image](https://github.com/user-attachments/assets/24d0b79d-bc47-4b3b-95d9-185066a3f89f)
 
