@@ -473,6 +473,145 @@ select Date_trunc(month , sales_date)  as months
 ```
 
 ###  Question 22
+ Write a query to find customer name and city who placed orders after 1st January 1, 2023 ?
+
+
+
+Customer table 
+
+| CustomerID | Customer Name | City        |
+| ---------- | ------------- | ----------- |
+| 1          | Alice Smith   | New York    |
+| 2          | Bob Johnson   | Los Angeles |
+| 3          | Charlie Davis | Chicago     |
+| 4          | Robin Smith   | Chicago     |
+| 5          | Tom Cruise    | London      |
+
+
+Order table 
+
+
+| OrderID | CustomerID | OrderDate  | OrderAmount |
+| ------- | ---------- | ---------- | ----------- |
+| 101     | 1          | 2023-01-01 | 250         |
+| 102     | 2          | 2024-03-11 | 150         |
+| 103     | 4          | 2023-04-10 | 300         |
+| 104     | 3          | 2022-05-04 | 450         |
+| 105     | 5          | 2024-07-22 | 120         |
+
+	
+```sql
+
+Select 
+	c.customerID 
+        c.Customer Name 
+        c.City 
+        o.OrderDate 
+        o.OrderAmount
+from 
+    customer c 
+join order o 
+where orderDate > "2023-01-1" 
+
+```
+
+### 23.  finding second heightest salary  from department  IT
+
+
+Employee table 
+
+
+| id  | name      | dept    | salary |
+|-----|-----------|---------|--------|
+| 1   | Alexander | Admin   | 6500   |
+| 2   | Leo       | Finance | 7000   |
+| 3   | Robin     | IT      | 2000   |
+| 4   | Ali       | IT      | 4000   |
+| 5   | Maria     | IT      | 6000   |
+| 6   | Alice     | Admin   | 5000   |
+| 7   | Sebastian | HR      | 3000   |
+| 8   | Emma      | Finance | 4000   |
+| 9   | John      | HR      | 4500   |
+| 10  | Kabir     | IT      | 8000   |
+
+
+
+``` sql 
+
+select  max(salary) from employee 
+where  salary <(select max(salary ) from employee where dept = IT)
+
+
+
+``` 
+
+Q4.  Find the name of the product that have never been sold  ?
+
+
+
+Product table 
+
+| ProductID | ProductName | Price   |
+| --------- | ----------- | ------- |
+| 1         | Laptop      | 1200.00 |
+| 2         | Smartphone  | 800.00  |
+| 3         | Tablet      | 500.00  |
+| 4         | Headphones  | 150.00  |
+| 5         | Smartwatch  | 200.00  |
+
+
+Sales table 
+
+| SaleID | ProductID | Quantity |
+| ------ | --------- | -------- |
+| 101    | 1         | 3        |
+| 102    | 2         | 5        |
+
+
+``` Sql 
+
+select   p.producID , p.ProductName p.Price
+
+from product p 
+left join sale s 
+where salesId  is NULL 
+
+
+```
+
+
+Q.5  Find the customer whose order amount exceed 1000 
+
+
+table cutomer 
+
+
+| OrderID | CustomerID | OrderAmount |
+| ------- | ---------- | ----------- |
+| 1       | 101        | 550.00      |
+| 2       | 102        | 150.50      |
+| 3       | 101        | 300.75      |
+| 4       | 103        | 450.00      |
+| 5       | 103        | 500.00      |
+| 6       | 101        | 250.00      |
+| 7       | 104        | 400.00      |
+| 8       | 103        | 820.25      |
+
+
+
+```  sql 
+
+select 
+sum(amount) , customerID 
+from customer 
+ group by (CustomerID) 
+ Having  sum(amount) >  1000
+
+
+
+``` 
+
+
 
 
 
