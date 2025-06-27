@@ -448,7 +448,7 @@ employee table
 ![image](https://github.com/user-attachments/assets/6eee3bda-b3fc-4657-a3dd-f08cf9ae908f)
 
 
-### Q3 
+### 21
 Q  Finding total sales for each month of the year 2023 
 
  SQL table
@@ -472,7 +472,7 @@ select Date_trunc(month , sales_date)  as months
 
 ```
 
-
+###  Question 22
 
 
 
