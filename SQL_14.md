@@ -448,6 +448,34 @@ employee table
 ![image](https://github.com/user-attachments/assets/6eee3bda-b3fc-4657-a3dd-f08cf9ae908f)
 
 
+### Q3 
+Q  Finding total sales for each month of the year 2023 
+
+ SQL table
+
+| sale\_id | sale\_date | amount |
+| -------- | ---------- | ------ |
+| 1        | 2024-11-01 | 150.00 |
+| 2        | 2023-10-02 | 200.50 |
+| 3        | 2023-01-03 | 350.75 |
+| 4        | 2024-11-04 | 420.00 |
+
+
+
+```sql 
+
+select Date_trunc(month , sales_date)  as months 
+       Date_trunc(year, sales_date) as year 
+       sum(amount) as sales_in_month
+       where year = '2023' 
+       group by 1 
+
+```
+
+
+
+
+
 
 
 
