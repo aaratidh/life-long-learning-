@@ -35,6 +35,11 @@ This question highlights a key challenge in data engineering:
 ### The Solution (and its evolution):
 
 The speaker walks through a multi-step solution that data engineers often employ:
+1.  **Daily Snapshots:** The first step is to take a daily "snapshot" of the `users` and `posts` tables and store them in a data lake [20:03]. This creates a historical record. Now, even if a post is deleted from the live database, you have a copy of it from a previous day's snapshot.
+2.  **Identifying Deleted Posts:** By comparing two consecutive daily snapshots (e.g., yesterday's and today's), you can identify which posts have been deleted. If a post ID exists in yesterday's snapshot but not in today's, it has been deleted [23:04].
+3.  **Slowly Changing Dimensions (SCDs):** To make this more efficient, the speaker introduces the concept of Slowly Changing Dimensions (SCDs) [24:32]. Instead of storing a full copy of the data every day, you only track the changes. For example, for the `posts` table, you could have columns like `is_deleted` and `post_text` that are updated as changes occur, along with start and end dates for each version of the record.
+4.  **One Big Table (OBT):** For even more complex questions, like "How many likes does a post containing 'SQL sucks' get before it's deleted?", the speaker proposes a "One Big Table" (OBT) approach [32:11]. In this model, you would create a single, wide table for each post. This table would include the post's information and an array of all the actions that have ever happened to that post (likes, comments, etc.).
+    * **Benefit:** This makes it very fast to analyze the entire history of a post without having to join large tables. You can easily filter and analyze the actions within the array.
+    * **Trade-off:** This approach uses more storage because you are duplicating some data.
 
-1.  **Daily Snapshots:** The first step is to take a daily "snapshot" of the `users` and `posts` tables and store them in a data lake [20:03]. This creates a historical record. Now, even if
-
+The speaker concludes by mentioning that this OBT architecture was used at Facebook to analyze long-term trends after a drop in growth, demonstrating its real-world application for complex analysis
