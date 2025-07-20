@@ -179,7 +179,11 @@ create table lisitng_copy LIKE listing
 
 
 
+# Interview Question 
 
+
+### How can one do  snowflake optimization an dtunning ? 
+-"I use a combination of ingestion automation, query tuning, and resource scaling to optimize Snowflake performance. Snowpipe helps me reduce latency, while materialized views and clustering keys accelerate analytics workloads. I also use query profiling and resource monitors to track performance and cost, and apply RBAC and tagging to manage access efficiently. These optimizations ensure high performance, data reliability, and cost control at scale."
 
 
 
