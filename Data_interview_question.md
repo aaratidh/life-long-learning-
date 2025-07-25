@@ -34,6 +34,7 @@ This question highlights a key challenge in data engineering:
 
 ### The Solution (and its evolution):
 
+
 The speaker walks through a multi-step solution that data engineers often employ:
 1.  **Daily Snapshots:** The first step is to take a daily "snapshot" of the `users` and `posts` tables and store them in a data lake [20:03]. This creates a historical record. Now, even if a post is deleted from the live database, you have a copy of it from a previous day's snapshot.
 2.  **Identifying Deleted Posts:** By comparing two consecutive daily snapshots (e.g., yesterday's and today's), you can identify which posts have been deleted. If a post ID exists in yesterday's snapshot but not in today's, it has been deleted [23:04].
@@ -46,6 +47,7 @@ The speaker concludes by mentioning that this OBT architecture was used at Faceb
 
 ###  describe one challanbge bug you covered in your work experince?
 
+```txt
 "Absolutely! At Capital One, I noticed that our PySpark ETL jobs processing large financial transaction data were experiencing unpredictable runtimes and sometimes failing due to skewed data partitions.
 
 Instead of simply scaling up clusters (which increases costs), I took an innovative approach. I designed a dynamic partitioning strategy where the job analyzes the distribution of keys before executing transformations.
