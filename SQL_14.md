@@ -623,9 +623,68 @@ join	empman e2
 on e2.Employee_ID = e1.Manager_ID
 
 ```
+```sql
+
+Create table customer  (
+    CustomerID int  Primary key , 
+	CustomerName  varchar(100)
+	) 
+
+	INsert into customer ( CustomerID , CustomerName ) values 
+	    (1, 'Alice Smith'),
+		(2,'Bob Johnson'),
+		(3,'Charlie Davis');
+
+Create table orders 
+   ( 
+   orderID int primary  key, 
+   CustomerID int, 
+   orderdate  DATE, 
+   orderAmount decimal(10 ,2),
+   FOREIGN KEy (CustomerID) references Customer(CustomerID)
+   )
+
+Create table Payment (
+   PAymentID int, 
+   OrderID int, 
+   PaymentAmount Decimal(10 , 2),
+   PaymentDate DATE, 
+   FOREIGN KEY (orderID) References Orders(OrderID)
+
+   );
 
 
+   Insert into orders  (orderID , CustomerID, orderdate , orderAmount ) values
 
+(101, 1, '2023-01-01', 250.00),
+(102, 2, '2024-11-03', 150.50),
+(103, 1, '2022-10-04', 300.75),
+(104, 3, '2023-12-05', 450.00),
+(105, 2, '2023-11-07', 120.25);
+	
+
+   Insert into payment (PAymentID ,OrderID, PaymentAmount, PAymentDate ) values 
+
+(1001, 101, 250.00, '2023-01-04'),
+(1002, 102, 150.50, '2024-11-10'),
+(1003, 103, 150.00, '2022-10-08'),
+(1004, 104, 450.00, '2023-12-06'),
+(1005, 105, 120.25, '2023-12-07');
+
+-- Q Write a query  to list each customer name, total order amount, total payment amounnt  for order placed in 2023 
+
+
+select c.customername ,  sum(o.orderamount ) , sum(p.paymentamount) 
+from customer c 
+join  orders o 
+on c.CustomerID = o.CustomerID
+join payment p 
+on p.OrderID = o.orderID
+where  Year(orderdate) = 2023
+group by  c.customername 
+
+
+```
 
 
 
