@@ -610,7 +610,19 @@ from customer
 
 
 ``` 
+### TAble empman 
 
+<img width="327" height="169" alt="image" src="https://github.com/user-attachments/assets/1104424c-e55b-48a3-856f-18d690197513" />
+
+### Q Write a query to  retrive the names of employees along with theirs direct  managers. 
+		 
+```sql 
+select e1.Employee_Name as employee , e2.employee_Name as managername 
+from	empman e1 
+join	empman e2 
+on e2.Employee_ID = e1.Manager_ID
+
+```
 
 
 
