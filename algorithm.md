@@ -23,18 +23,16 @@ class Tree:
         else:
             print(root.val)
             if self.left:
-                inorder( node.left)
+                preorder( node.left)
             if self.right:
-                inorder(node.right)
+                preorder(node.right)
     def postorder( node):
         if node == None:
             return
         else:
             if self.left:
-                inorder( node.left)
+                postorder( node.left)
             if self.right:
-
-
-                inorder(node.right)
+                postorder(node.right)
         print(root.val)
 ```
