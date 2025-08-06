@@ -34,6 +34,7 @@ class Tree:
                 inorder( node.left)
             if self.right:
 
-```
+
                 inorder(node.right)
         print(root.val)
+```
