@@ -56,7 +56,8 @@ class Tree:
 ```
 
 
-The trick here is that array.append([0] * (i + 1))   this does as a list multiplication:
+# Note: The trick here is that array.append([0] * (i + 1))   this does as a list multiplication:
+# Note: "The trick here is that moving row number i after completing j all posssible ranges "
 
 Create a new list of length (i + 1) filled with zeros, and append it as a new row in array."
 
