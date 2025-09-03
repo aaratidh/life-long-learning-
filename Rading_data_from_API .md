@@ -1,13 +1,10 @@
 # reading JSON  Data from  API 
 ```python
-
-import csv
-from datetime import datetime
-
 import requests
-from urllib3.filepost import writer
+import datetime
 
-url='https://a6bbcd99-cf64-4c56-a4d8-ba4d940e57b8.mock.pstmn.io/events.json'
+url = 'https://a6bbcd99-cf64-4c56-a4d8-ba4d940e57b8.mock.pstmn.io/events.json'
+data = requests.get(url).json()
 
 """
 hour
@@ -20,32 +17,28 @@ conversion_rate
 revenue_per_impression
 """
 
-data= requests.get(url).json()
-#print(data)
-time_data={}
+hourly_data = {}
 
 for row in data:
-    timestamp = row.get('timestamp')
-    dt= datetime.strptime(timestamp,'%Y-%m-%d %H:%M:%S')
-    hour = dt.hour
+    timestamp =row.get("timestamp")
+    dt = datetime.datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S")
+    hr = dt.hour
 
-    if hour not in time_data:      #intialization
-        time_data[hour] = {
-            'impressions':0,
-            'clicks':0,
-            'revenue':0,
-            'conversion':0
+    if hr not in hourly_data:
+        hourly_data[hr] =  {
+            'impressions' : 0,
+            'revenue': 0,
+            'clicks': 0,
+            'conversion': 0
         }
 
-    time_data[hour]['impressions'] += int(row.get('impressions'))
-    time_data[hour]['clicks'] += int(row.get('clicks'))
-    time_data[hour]['revenue'] +=float(row.get('revenue'))
-    time_data[hour]['conversion'] += int(row.get('conversion'))
+    hourly_data[hr]['impressions'] += int(row.get('impressions'))
+    hourly_data[hr]['revenue'] += float(row.get('revenue'))
+    hourly_data[hr]['clicks'] += int(row.get('clicks'))
+    hourly_data[hr]['conversion'] += int(row.get('conversion'))
 
 
-print(time_data)
-
-rows=[]
+rows = []
 fields=[
 'hour',
 'impressions',
@@ -57,42 +50,27 @@ fields=[
 'revenue_per_impression'
 ]
 
-for hr, agg in time_data.items():
-    impressions = agg['impressions']
-    clicks = agg['clicks']
-    conversions = agg['conversion']
-    revenue = agg['revenue']
+for hr, agg in hourly_data.items():
+    impression = agg['impressions'],
+    revenue = agg['revenue'],
+    clicks = agg['clicks'],
+    conversion = agg['conversion'],
 
-    row=    {
-            'hour': hr,
-            'impressions':impressions,
-            'clicks':clicks,
-            'conversion':conversions,
-            'revenue':revenue,
-            'click_through_rate': clicks / impressions,
-            'conversion_rate':conversions / impressions,
-            'revenue_per_impression': revenue / impressions
-
-        }
-
+    row = {
+        'hour' : hr,
+        'impressions' : impression,
+        'revenue' : revenue ,
+        'clicks' : clicks ,
+        'conversion' : conversion,
+        'click_through_rate' : clicks / impression,
+        'conversion_rate': conversion / impression ,
+        'revenue_per_impression': revenue / impression
+    }
     rows.append(row)
 
-
-
-with open('result.csv', mode='w', newline='') as file:
-    writer=csv.DictWriter(file, fieldnames=fields)
-    writer.writeheader()
-    writer.writerows(rows)
-
-
-
-# select
-# d.compaign_name,
-# sum(f.revenue) as total_revenue
-# from fact_event as f join dim_compaign as d on f.compaign_id = d.compaign_id
-# group by d.compaign_name
-# having sum(f.revenue) > 1000000
+print(row)
 
 ```
-# order by sum(f.revenue) desc
+
+
 
