@@ -15,5 +15,6 @@ How to install pysaprk in pycharm in windows
   <img width="814" height="639" alt="image" src="https://github.com/user-attachments/assets/193574d1-d29d-4acf-9d4d-898a3d5283cf" />
 - After the packge is install succesfully remove the clode the setting and restart the pycharm
 
-
+### One need to have Java JDk install in the system you must have a Java folder and jdk inside it with bin and all other executable folder and files 
+### add the Path of installed Java in the system variable ,  and add system variable in syatem path not need to add those in user variable
 
