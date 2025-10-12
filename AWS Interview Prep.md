@@ -61,7 +61,6 @@ Compile Time happens before Run Time.
 ## How can i build a piple line with Airflow
 - I can use a Define DAGs importing from Airflow and then  run dag in python or shell scripting 
 eg
-``` python
-<img width="712" height="493" alt="image" src="https://github.com/user-attachments/assets/cf9d66e7-c939-48cb-a0ad-8b949a692ff3" />
-```
+<img width="712" height="493" alt="image" src="https://github.com/user-attachments/assets/66253973-acbc-4fff-80eb-191b70614062" />
+
 
