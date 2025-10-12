@@ -7,6 +7,8 @@
     - Build applications : Code gets complied, runs packages installation, build includes Unit Test
     - Deployed application : Build application into web , this includes integration testing, UI testig
 - CI/CD Category Looks like:
+
+  
 | Category                      | Tools                                | Use                                                                       |
 | ----------------------------- | ------------------------------------ | ------------------------------------------------------------------------- |
 | **Version Control**           | GitHub / GitLab / Bitbucket          | Instead of (or in addition to) CodeCommit                                 |
