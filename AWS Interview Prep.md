@@ -47,6 +47,7 @@ AppFlow does not support REST APIs natively, so use one of the following approac
   - Snowflake
 
 ## AWS EMR ? 
+- 
 
 
 ## compile time VS Execution time VS RUntime 
@@ -57,6 +58,10 @@ AppFlow does not support REST APIs natively, so use one of the following approac
 Total Run Time = Load Time + Execution Time
 Compile Time happens before Run Time.
 ``` 
-
-
+## How can i build a piple line with Airflow
+- I can use a Define DAGs importing from Airflow and then  run dag in python or shell scripting 
+eg
+``` python
+<img width="712" height="493" alt="image" src="https://github.com/user-attachments/assets/cf9d66e7-c939-48cb-a0ad-8b949a692ff3" />
+```
 
