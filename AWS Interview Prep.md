@@ -62,5 +62,11 @@ Compile Time happens before Run Time.
 - I can use a Define DAGs importing from Airflow and then  run dag in python or shell scripting 
 eg
 <img width="712" height="493" alt="image" src="https://github.com/user-attachments/assets/66253973-acbc-4fff-80eb-191b70614062" />
+Each DAGS is the  component that include ingesttion transformation, 
+
+
+
+
+
 
 
