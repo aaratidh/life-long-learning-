@@ -46,4 +46,18 @@ AppFlow does not support REST APIs natively, so use one of the following approac
   - Amazon Redshift
   - Snowflake
 
+### AWS EMR ? 
+
+
+### compile time VS Execution time VS RUntime 
+- complie time is time required to convert code into machine language eg.  any code into 101010
+- Execution time is exact time required by CUP for processing: CPU USage  time : to reduce: use parrallism threading, Reduce I/O Operations loadone to then reuse it, proper algorithm , used hash intested of nested loops  
+- Runtime is total time required to run a programe it include execution time + input output read writes/ overhead +waiting time
+
+```python 
+Total Run Time = Load Time + Execution Time
+Compile Time happens before Run Time.
+``` 
+
+
 
