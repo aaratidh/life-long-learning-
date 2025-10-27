@@ -690,7 +690,7 @@ group by  c.customername
 
 # find teh cumulative sum of the following 
 Queue table:
-+-----------+-------------+--------+------+
+
 | person_id | person_name | weight | turn |
 |-----------|-------------|--------|------|
 | 5         | Alice       | 250    | 1    |
@@ -699,11 +699,10 @@ Queue table:
 | 6         | John Cena   | 400    | 3    |
 | 1         | Winston     | 500    | 6    |
 | 2         | Marie       | 200    | 4    |
-+-----------+-------------+--------+------+
 Output: 
 
 Explanation: The folowing table is ordered by the turn for simplicity.
-+------+----+-----------+--------+--------------+
+
 | Turn | ID | Name      | Weight | Total Weight |
 |------|----|-----------|--------|--------------|
 | 1    | 5  | Alice     | 250    | 250          |
