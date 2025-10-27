@@ -1,4 +1,11 @@
-## Question:
++## Question:
+
+### points to take: 
+- if the name of sql column has white space the use `` this bracket
+- to find comulative sum in SQL use sum(column on which value has to be summed) over ()
+- converting different columns of a table in a same column of another table can be done using Union all.
+
+
 
 Provide the name for each region for every order, as well as the account name and the unit price they paid (`total_amt_usd / total`) for the order.  
 However, you should only provide the results if the **standard order quantity exceeds 100**.  
