@@ -60,6 +60,24 @@ Moreover, I extended this concept to create a custom Spark listener that tracked
 
 This solution not only improved pipeline efficiency but also empowered the team to adopt a more data-driven approach to job tuning, moving away from guesswork and manual tweaking."
 
+```
+## Challange in recent project  
+
+- Problem was: data skewed ko
+- How did you find ma - Spark ui metrics
+- causes :  Uneven key  
+- Solution was: 
+         - salting
+         - Adaptive query execution
+## What did you do for cost  optimization and what did you do to make sure it  does not impact data quality and completeness ?
+- Added Validation check point
+- Hash checks between pre- and post optimization
+- end to end lineage USe Delta lake ACIDIC trasncation for consistency during merge
+  
+  
+
+
+
 
 
 
