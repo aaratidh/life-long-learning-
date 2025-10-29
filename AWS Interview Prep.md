@@ -1,6 +1,6 @@
 ### Work flow to read data from slaesfroce and REST APT Using AWS Appflow lambda 
 
-# AWS AppFlow Workflow: Ingest Salesforce CRM and REST API Data
+# Q1. AWS AppFlow Workflow: Ingest Salesforce CRM and REST API Data
 
 ## Workflow Steps
 
@@ -47,7 +47,7 @@ AppFlow does not support REST APIs natively, so use one of the following approac
   - Snowflake
 
 ## AWS EMR ? 
-- 
+
 
 
 ## compile time VS Execution time VS RUntime 
@@ -65,8 +65,22 @@ eg
 Each DAGS is the  component that include ingesttion transformation, 
 
 
+# Q2.  What what the challange you faced in Trasaction analysis problem. 
+### Situation: In our real-time fraud detection project, we streamed credit card transactions from multiple sources—ATMs, card readers, and Apple Pay—through Kafka into Databricks Delta Lake using PySpark Structured Streaming.
 
+### Task: After a few days,
+- We noticed performance dropped because fraud alerts started taking longer to show up — what used to run in 2 minutes began taking 10–15 minutes.
+- When I checked the Delta table in Databricks, I saw thousands of tiny files in the storage path instead of a few big ones.
+- The DESCRIBE DETAIL and OPTIMIZE commands showed file counts were very high, confirming the small file problem.
+- Problem: More files = more time to read = slower alerts.
 
+### Action: I identified the root cause as the small file problem, where thousands of tiny Delta files were being written from frequent micro-batches. 
+- I optimized the pipeline by adjusting the micro-batch trigger to one minute,
+- partitioning data by ingestion date, 
+- and scheduling daily OPTIMIZE jobs in Databricks to compact small files.
 
+### Result: This reduced metadata overhead by 90%, improved query speed by 5×, and kept the streaming fraud detection system cost-efficient and near real time.
+
+## Note : Fraud alert: The fraud alert was a signal sent when a transaction looked suspicious — like sudden large payments or spending in two faraway places within minutes.The alert job ran on new transactions from the Delta table, scoring each with our fraud model. When performance dropped, these alerts started showing up late instead of instantly.
 
 
