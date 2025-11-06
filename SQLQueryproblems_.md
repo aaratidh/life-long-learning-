@@ -4,6 +4,8 @@
 - if the name of sql column has white space the use `` this bracket
 - to find comulative sum in SQL use sum(column on which value has to be summed) over ()
 - converting different columns of a table in a same column of another table can be done using Union all.
+- If there are no common column in cross join then use cross join
+  
 
 
 
