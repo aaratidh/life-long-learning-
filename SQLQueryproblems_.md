@@ -1,4 +1,4 @@
-+## Question:
+## Question:
 
 ### points to take: 
 - if the name of sql column has white space the use `` this bracket
